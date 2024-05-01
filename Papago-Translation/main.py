@@ -6,10 +6,6 @@ import json
 from urllib import request, parse
 
 
-# Naver Papago Translation API credentials
-client_id = 'YOUR_CLIENT_ID'
-client_secret = 'YOUR_CLIENT'
-
 def req_papago_translation_api(text, source='en', target='ko'):
     data = f'source={source}&target={target}&text={parse.quote(text)}'
 
@@ -51,7 +47,7 @@ if __name__ == '__main__':
     input_text = sys.argv[1]
 
     # Determine the source and target languages based on the input text
-    if input_text.isalpha():
+    if input_text.encode(encoding='utf-8').isalpha():
         source, target = 'en', 'ko' 
     else:
         source, target = 'ko', 'en'
